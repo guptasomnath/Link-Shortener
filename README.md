@@ -2,9 +2,9 @@
 This is a full-stack responsive server-side **link shortener** web app 
 
 # Technology Used
-Node Js And Express Js For Backend Development,\n
-EJS for view engine,\n
-MongoDB for database,\n
+Node Js And Express Js For Backend Development,<br />
+EJS for view engine,<br />
+MongoDB for database,<br />
 Deployed At Vercel Cloud
 
 # Demo
