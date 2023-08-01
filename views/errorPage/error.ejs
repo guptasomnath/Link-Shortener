@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/errorPage/error.css" />
+    <title>Error Page</title>
+  </head>
+  <body>
+    <section id = "errorSectionDiv" class="errorSection">
+      <form method="get" action="/" class="errorDetails">
+        <h1><%= locals.errorTitle ? errorTitle : "Something Wrong!" %></h1>
+        <p><%= locals.errorMessage ? errorMessage : "There is something wrong happening, please try again later" %></p>
+        <button type="submit">HOME PAGE</button>
+      </form>
+    </section>
+    <script>
+      document.getElementById("errorSectionDiv").style.setProperty("--screenHeight--", window.innerHeight + "px");
+    </script>
+  </body>
+</html>

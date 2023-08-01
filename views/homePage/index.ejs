@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Link Shortner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="/homePage/main.css"
+    />
+  </head>
+  <body>
+    <section id="sectionDiv" class="section">
+      <h1>Free URL Shortener</h1>
+      <label class="aboutMeLbl"
+        >It is a free tool to <a href="">shorten URLs</a> powered by
+        Somnath. Create short & memorable links in secounds.</label
+      >
+      <div class="formDiv">
+        <form method="post" action="/" class="shortUrlInputDiv">
+          <input type="text" placeholder="Enter link here" name="url" />
+          <button type="submit" id="shortLinkBtn">Shorten URL</button>
+        </form>
+
+        <% if(locals.response){ %>
+        <div class="resultSection">
+          <div class="shortUrlDetail">
+            <p id="originalUrl"><%= response.originalUrl %></p>
+            <p>
+              <a id="shortUrl" href="http://localhost:3000/<%= response.urlID %>"
+                >http://localhost:3000/<%= response.urlID %></a
+              >
+            </p>
+          </div>
+          <label id="copyBtn">Copy</label>
+        </div>
+
+        <% } %>
+      </div>
+
+      <label class="conditionLbl"
+        >By clicking Shorten URL, you agree Somnath's
+        <a href="">Terms of Use</a>, <a href="">Privacy Policy</a> and
+        <a href="">Cookie Policy</a>.</label
+      >
+    </section>
+    <script>
+      const originalUrl = document.getElementById("originalUrl");
+      const shortUrl = document.getElementById("shortUrl");
+
+      document
+        .getElementById("sectionDiv")
+        .style.setProperty("--screenHeight--", window.innerHeight + "px");
+      const shortUrllink = shortUrl.innerText;
+
+      if (originalUrl && shortUrl) {
+        if (window.innerWidth >= 600) {
+          originalUrl.innerText = originalUrl.innerText.length > 40 ? originalUrl.innerText.slice(0, 40) + "..." : originalUrl.innerText;
+          shortUrl.innerText = shortUrl.innerText.length > 40 ? shortUrl.innerText.slice(0, 40) + "..." : shortUrl.innerText;
+        } else {
+          originalUrl.innerText = originalUrl.innerText.length > 27 ? originalUrl.innerText.slice(0, 27) + "..." : originalUrl.innerText;
+          shortUrl.innerText = shortUrl.innerText.length > 27 ? shortUrl.innerText.slice(0, 27) + "..." : shortUrl.innerText;
+        }
+      }
+     
+      document.getElementById('copyBtn').onclick = () => {
+        navigator.clipboard.writeText(shortUrllink);
+        alert('Link Copied');
+      }
+
+    </script>
+  </body>
+</html>
